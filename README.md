@@ -3,6 +3,10 @@
 
 This project uses the latest release of [Python 3](https://www.python.org/downloads/)
 
+### Get in the top level directory of the app
+
+    $ cd parking-lot
+
 ### Create Your Virtual Environment
 
 To get started you will need to have Python 3, pip, and
