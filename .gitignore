@@ -1,3 +1,4 @@
-parking.*
+parking.db
 .tox*
 *.pyc
+*.egg-info
