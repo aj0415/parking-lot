@@ -29,7 +29,7 @@ Run this in your active virtual environment
 Now you can view the status of the Parking Lot, Revenue, and Parking Queue at [http://localhost:5000/status](http://localhost:5000/status)
 
 ## Usage
-### POST /park/<vehicle-name>/<minutes-required-to-park>
+### POST /park/"vehicle-name"/"minutes-required-to-park"
 Park a vehicle in the parking lot, or add to the queue if no spaces are available
 
 NOTE: The vehicle-name value must be unique
@@ -44,7 +44,7 @@ Example of parking a vehicle
     Server: Werkzeug/0.12.2 Python/3.6.2
     Date: Mon, 07 Aug 2017 20:20:50 GMT
 
-### POST /leave/<vehicle-name>
+### POST /leave/"vehicle-name"
 Remove a vehicle from it's space in the parking lot and park the next vehicle in the queue, if one
 exists
 
