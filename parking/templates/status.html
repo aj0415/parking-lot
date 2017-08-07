@@ -1,0 +1,37 @@
+<!doctype html>
+<title>Parking</title>
+<link rel=stylesheet type=text/css href="{{ url_for('static', filename='style.css') }}">
+<div class=page>
+  <h1>Parking Status</h1>
+    <h2>Lot Status</h2>
+        <table class="lot">
+            <tr>
+                <th>Space #</th>
+                <th>Vehicle</th>
+                <th>Park Time</th>
+                <th>Required Parking Time</th>
+            </tr>
+            {% for lot_row in lot_data %}
+            <tr>
+            {% for lot_d in lot_row %}
+                <td>{{ lot_d }}</td>
+            {% endfor %}
+            </tr>
+            {% endfor %}
+        </table>
+    <h2>Queue Status</h2>
+        <table class="queue">
+            <tr>
+                <th>Queue #</th>
+                <th>Vehicle</th>
+                <th>Required Parking Time</th>
+            </tr>
+            {% for queue_row in queue_data %}
+            <tr>
+            {% for queue_d in queue_row %}
+                <td>{{ queue_d }}</td>
+            {% endfor %}
+            </tr>
+            {% endfor %}
+        </table>
+</div>
