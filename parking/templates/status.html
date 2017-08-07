@@ -3,13 +3,26 @@
 <link rel=stylesheet type=text/css href="{{ url_for('static', filename='style.css') }}">
 <div class=page>
   <h1>Parking Status</h1>
+    <h2>Parking Lot Revenue</h2>
+      <table class="lot">
+        <tr>
+          <th>Total Revenue</th>
+        </tr>
+        {% for revenue_row in revenue_data %}
+        <tr>
+        {% for revenue_d in revenue_row %}
+          <td>{{ revenue_d }}</td>
+        {% endfor %}
+        </tr>
+        {% endfor %}
+      </table>
     <h2>Lot Status</h2>
         <table class="lot">
             <tr>
                 <th>Space #</th>
                 <th>Vehicle</th>
                 <th>Park Time</th>
-                <th>Required Parking Time</th>
+                <th>Leave Time</th>
             </tr>
             {% for lot_row in lot_data %}
             <tr>

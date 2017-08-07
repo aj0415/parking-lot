@@ -24,6 +24,11 @@ table{
     color: white;
 }
 
+.revenue th {
+    background-color: #77dd77;
+    color: white;
+}
+
 tr:nth-child(odd)		{ background-color:#eee; }
 tr:nth-child(even)	{ background-color:#fff; }
 
