@@ -17,7 +17,7 @@ def lot_status():
 
 @app.route('/park/<vehicle_name>/<parking_time_length>', methods=['POST'])
 def park_vehicle(vehicle_name, parking_time_length):
-    park(vehicle_name, int(parking_time_length))
+    park(vehicle_name, int(float(parking_time_length)))
     return '', 202
 
 
