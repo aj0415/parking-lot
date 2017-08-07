@@ -2,7 +2,7 @@
 ## Initial Setup
 ### Create Your Virtual Environment
 
-This project uses the latest release of [Python](https://www.python.org/downloads/)
+This project uses the latest release of [Python 3](https://www.python.org/downloads/)
 
 To get started you will need to have pip and
 [tox](https://tox.readthedocs.io/en/latest/) installed.
