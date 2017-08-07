@@ -1,6 +1,6 @@
 # Parking Lot API
 ## Initial Setup
-###Create Your Virtual Environment
+### Create Your Virtual Environment
 To get started you will need to have pip and
 [tox](https://tox.readthedocs.io/en/latest/) installed.
 
@@ -15,7 +15,7 @@ Running this command will create a new virtual environment in the `.tox/devenv` 
 
 ### Initialize Your Database
 
-Running this command will create a 'parking.db' SQLite database file in the top level directory, which includes all
+Running this command will create a `parking.db` SQLite database file in the top level directory, which includes all
 the necessary tables.
 
     $ initialize-db
@@ -64,4 +64,4 @@ Example of removing a vehicle
 
     $ parking-remove-db
 
-This command will delete the 'parking.db' SQLite database file and all the data in the database
+This command will delete the `parking.db` SQLite database file and all the data in the database
