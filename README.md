@@ -14,6 +14,7 @@ Running this command will create a new virtual environment in the `.tox/devenv` 
     $ source .tox/devenv/bin/activate
 
 ### Initialize Your Database
+Run this in your active virtual environment
 
 Running this command will create a `parking.db` SQLite database file in the top level directory, which includes all
 the necessary tables.
@@ -21,6 +22,7 @@ the necessary tables.
     $ initialize-db
 
 ### Start the Flask Application
+Run this in your active virtual environment
 
     $ parking-serve
 
@@ -61,6 +63,7 @@ Example of removing a vehicle
 
 ## Extras
 ### Remove Your Database
+Run this in your active virtual environment
 
     $ parking-remove-db
 
