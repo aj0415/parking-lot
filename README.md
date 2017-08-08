@@ -37,6 +37,9 @@ Run this in your active virtual environment
 Now you can view the status of the Parking Lot, Revenue, and Parking Queue at [http://localhost:5000/status](http://localhost:5000/status)
 
 ## Usage
+
+In a new terminal:
+
 ### POST /park/[vehicle-name]/[minutes-required-to-park]
 Park a vehicle in the parking lot, or add to the queue if no spaces are available
 
