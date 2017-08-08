@@ -79,3 +79,10 @@ Run this in your active virtual environment
     $ parking-remove-db
 
 This command will delete the `parking.db` SQLite database file and all the data in the database
+
+### Deactivate Your Environment
+Run this in your active virtual environment
+
+    $ deactivate
+
+This command will deactivate your tox environment
