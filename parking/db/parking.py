@@ -26,6 +26,10 @@ revenue = Table('revenue', metadata,
 
 
 def drop_db():
+    """Remove database if it exists.
+
+    """
+
     try:
         os.remove('parking.db')
     except OSError:
@@ -33,6 +37,13 @@ def drop_db():
 
 
 def get_lot_status():
+    """Get the status of the parking lot.
+
+    Returns:
+        lot_results: If there is data in the `lot_table`
+
+    """
+
     lot_table = getattr(parking.db.parking, 'lot')
 
     lot_query = select([lot_table.c.space_id, lot_table.c.vehicle_name,
@@ -47,6 +58,13 @@ def get_lot_status():
 
 
 def get_queue_status():
+    """Get the status of the parking queue.
+
+    Returns:
+        queue_results: If there is data in the `queue_table`
+
+    """
+
     queue_table = getattr(parking.db.parking, 'queue')
 
     queue_query = select([queue_table.c.queue_id, queue_table.c.vehicle_name,
@@ -60,6 +78,13 @@ def get_queue_status():
 
 
 def get_revenue_status():
+    """Get the status of the revenue.
+
+    Returns:
+        revenue_results: If there is data in the `revenue_table`
+
+    """
+
     revenue_table = getattr(parking.db.parking, 'revenue')
 
     revenue_query = select([revenue_table.c.total_revenue])
@@ -71,6 +96,10 @@ def get_revenue_status():
 
 
 def initialize():
+    """Initialize the `lot_table` and `revenue_table` with initial data.
+
+    """
+
     lot_table = getattr(parking.db.parking, 'lot')
 
     insert_spaces = []
@@ -95,6 +124,14 @@ def initialize():
 
 
 def park(vehicle_name, parking_time_length):
+    """Park the vehicle in the parking lot or the parking queue.
+
+    Args:
+        vehicle_name (str): Name of the vehicle to be parked, must be unique
+        parking_time_length (int): Length of time, in minutes, required to park
+
+    """
+
     lot_table = getattr(parking.db.parking, 'lot')
 
     null_value = None
@@ -125,22 +162,43 @@ def park(vehicle_name, parking_time_length):
 
 
 def calculate_fee(day_of_week, park_time):
+    """Calculate the vehicle parking fee for a day.
+
+    Args:
+        day_of_week (str): Specification of weekday or weekend
+        park_time (time): Length of time parked in the parking lot for the day
+
+    Returns:
+        fee: Parking fee for the day
+
+    """
+
     rate_dict = {'weekday': {'lt_2': 5, '2_6': 10, '6_12': 15, '24': 20},
                  'weekend': {'lt_2': 10, '2_6': 20, '6_12': 30, '24': 40}}
 
     if park_time <= time(2, 0):
-        rate = rate_dict[day_of_week]['lt_2']
+        fee = rate_dict[day_of_week]['lt_2']
     elif time(2, 0) < park_time <= time(6, 0):
-        rate = rate_dict[day_of_week]['2_6']
+        fee = rate_dict[day_of_week]['2_6']
     elif time(6, 0) < park_time <= time(12, 0):
-        rate = rate_dict[day_of_week]['6_12']
+        fee = rate_dict[day_of_week]['6_12']
     elif time(12, 0) < park_time <= time(23, 59, 59):
-        rate = rate_dict[day_of_week]['24']
+        fee = rate_dict[day_of_week]['24']
 
-    return rate
+    return fee
 
 
 def seconds_to_time(total_seconds):
+    """Convert number of seconds to hours, minutes, and seconds.
+
+    Args:
+        total_seconds (int): Length of time, in seconds, parked in the parking lot for the day
+
+    Returns:
+        time: Time object that includes hours, minutes, and seconds
+
+    """
+
     hours = total_seconds // 3600
     minutes = (total_seconds % 3600) // 60
     seconds = total_seconds % 60
@@ -149,6 +207,14 @@ def seconds_to_time(total_seconds):
 
 
 def leave(vehicle_name):
+    """Remove a vehicle from the parking lot, collect the total parking fee for the vehicle,
+       and move the next vehicle in the parking queue, if there are any, into the parking lot.
+
+    Args:
+        vehicle_name (str): Name of the vehicle to be removed from the parking lot
+
+    """
+
     lot_table = getattr(parking.db.parking, 'lot')
     queue_table = getattr(parking.db.parking, 'queue')
     revenue_table = getattr(parking.db.parking, 'revenue')
