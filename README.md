@@ -49,7 +49,9 @@ In a new terminal:
 ### POST /park/[vehicle-name]/[minutes-required-to-park]
 Park a vehicle in the parking lot, or add to the queue if no spaces are available
 
-#### NOTE: The vehicle-name value must be unique
+#### NOTE: The vehicle-name value must be unique or you will get the error below:
+
+    HTTP/1.0 500 INTERNAL SERVER ERROR
 
 Example of parking a vehicle
 
