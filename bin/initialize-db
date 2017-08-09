@@ -1,5 +1,3 @@
-#!/usr/bin/env python
-
 import parking.db.parking
 
 parking.db.parking.metadata.create_all()
