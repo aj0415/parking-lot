@@ -1,4 +1,0 @@
-import parking.db.parking
-
-parking.db.parking.metadata.create_all()
-parking.db.parking.initialize()
