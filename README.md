@@ -19,7 +19,13 @@ Running this command will create a new virtual environment in the `.tox/devenv` 
 
 ### Activate Your Virtual Environment
 
+#### Mac/Linux
+
     $ source .tox/devenv/bin/activate
+
+#### Windows
+
+    $ .tox\devenv\Scripts\activate
 
 ### Initialize Your Database
 Run this in your active virtual environment
